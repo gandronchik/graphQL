@@ -1,8 +1,11 @@
 import {makeRequest} from './make-request'
 
-export const queryAll = makeRequest(
-  () => `query {
-    apps {
+export const create = makeRequest(
+  ({name}) => `mutation {
+    createApp(app: {
+      name: "${name}"
+      publisherId: "almus"
+    }) {
       id
       name
       publisher {
@@ -14,11 +17,6 @@ export const queryAll = makeRequest(
         name
       }
     }
-
-    developers {
-      id
-      name
-    }    
   }`,
-  (v) => v,
+  ({createApp}) => createApp,
 )

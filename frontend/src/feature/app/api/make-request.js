@@ -3,7 +3,7 @@ const fetch = require('cross-fetch')
 const API_URL = process.env.REACT_APP_API_URL
 const API = `${API_URL}/graphql`
 
-export function makeRequest(queryFn, entityName) {
+export function makeRequest(queryFn, fn) {
   return async function query(params) {
     const r = await fetch(API, {
       method: `POST`,
@@ -21,6 +21,6 @@ export function makeRequest(queryFn, entityName) {
       throw errors[0]
     }
 
-    return data[entityName]
+    return fn(data)
   }
 }

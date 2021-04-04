@@ -5,14 +5,15 @@ import {dataSources} from './datasources'
 
 const server = new ApolloServer({
   cors: {
-    "origin": "*",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   },
   typeDefs: gql`
     ${typeDefs}
   `,
+
   resolvers,
   dataSources,
 })
